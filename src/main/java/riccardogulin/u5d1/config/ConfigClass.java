@@ -2,9 +2,9 @@ package riccardogulin.u5d1.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import riccardogulin.u5d1.entities.FrontendStudent;
-import riccardogulin.u5d1.entities.Interviewer;
-import riccardogulin.u5d1.entities.Student;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
+import riccardogulin.u5d1.entities.*;
 
 @Configuration
 /*
@@ -31,15 +31,22 @@ public class ConfigClass {
 		return new FrontendStudent("Aldo", "Baglio");
 	}
 
-//	@Bean(name = "giova")
-//	public BackendStudent getBEStudent() {
-//		return new BackendStudent("Giovanni", "Storti");
-//	}
-//
-//	@Bean
-//	public FullStackStudent getFSStudent() {
-//		return new FullStackStudent("Giacomo", "Poretti");
-//	}
+	@Bean(name = "giova")
+	@Primary // Annotazione opzionale che permette di risolvere le ambiguità
+	// E' una sorta di caso di default perché se Spring non sa chi scegliere
+	// sceglierà questo come "ultima spiaggia"
+	public BackendStudent getBEStudent() {
+		return new BackendStudent("Giovanni", "Storti");
+	}
+
+	@Bean
+	@Scope("prototype") // Di default sono tutti SINGLETON
+	// SINGLETON = esiste UNA SOLA COPIA DELL'OGGETTO in tutta l'applicazione. Ogni volta che faccio .getBean()
+	// mi torna sempre lo stesso
+	// PROTOTYPE = ogni volta che faccio .getBean() mi torna una NUOVA COPIA dell'oggetto
+	public FullStackStudent getFSStudent() {
+		return new FullStackStudent("Giacomo", "Poretti");
+	}
 
 //	@Bean
 //	public FullStackStudent getFSStudent2() {
@@ -48,7 +55,7 @@ public class ConfigClass {
 
 	@Bean
 	public Interviewer getInterviewer(Student student) {
-		// Il parametro FullStackStudent è una DIPENDENZA di Interviewer
+		// Il parametro Student è una DIPENDENZA di Interviewer
 		// Spring pertanto non è che solo crea oggetti semplici, ma è anche
 		// in grado di risolvere le dipendenze andando a ricercare nello
 		// scatolone se ci siano dei Bean compatibili (in questo caso per tipo)

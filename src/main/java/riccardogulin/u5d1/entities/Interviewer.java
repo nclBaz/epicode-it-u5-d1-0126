@@ -8,7 +8,7 @@ public class Interviewer {
 	}
 
 	public void askQuestion() {
-		System.out.println("Buongiorno " + this.student.getSurname() + ", mi risponda alla seguente domanda...blablabla");
+		System.out.println("Buongiorno " + this.student.getName() + " " + this.student.getSurname() + ", mi risponda alla seguente domanda...blablabla");
 		this.student.answerQuestion();
 	}
 }

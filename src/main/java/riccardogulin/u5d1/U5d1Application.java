@@ -3,7 +3,7 @@ package riccardogulin.u5d1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import riccardogulin.u5d1.entities.Interviewer;
+import riccardogulin.u5d1.entities.FullStackStudent;
 
 @SpringBootApplication
 public class U5d1Application {
@@ -40,9 +40,25 @@ public class U5d1Application {
 //		BackendStudent giovaFromContext2 = context.getBean("giova", BackendStudent.class);
 //		System.out.println(giovaFromContext2);
 
-		Interviewer interviewer = context.getBean(Interviewer.class);
-		interviewer.askQuestion();
+//		Interviewer interviewer = context.getBean(Interviewer.class);
+//		interviewer.askQuestion();
 
+
+		FullStackStudent giacomoFromContext = context.getBean(FullStackStudent.class);
+
+		giacomoFromContext.setName("Ajeje");
+
+		System.out.println(giacomoFromContext);
+
+
+		FullStackStudent giacomoFromContext2 = context.getBean(FullStackStudent.class);
+		System.out.println(giacomoFromContext2);
+
+		if (giacomoFromContext == giacomoFromContext2) {
+			System.out.println("SONO UGUALI");
+		} else {
+			System.out.println("SONO DIVERSI");
+		}
 
 	}
 
