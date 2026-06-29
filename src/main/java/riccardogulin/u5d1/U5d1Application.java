@@ -45,7 +45,6 @@ public class U5d1Application {
 
 
 		FullStackStudent giacomoFromContext = context.getBean(FullStackStudent.class);
-
 		giacomoFromContext.setName("Ajeje");
 
 		System.out.println(giacomoFromContext);
@@ -59,7 +58,7 @@ public class U5d1Application {
 		} else {
 			System.out.println("SONO DIVERSI");
 		}
-
+		
 	}
 
 }

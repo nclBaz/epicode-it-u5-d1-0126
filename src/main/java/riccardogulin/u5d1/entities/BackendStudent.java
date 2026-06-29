@@ -1,5 +1,6 @@
 package riccardogulin.u5d1.entities;
 
+
 public class BackendStudent extends Student {
 	public BackendStudent(String name, String surname) {
 		super(name, surname);

@@ -1,6 +1,17 @@
 package riccardogulin.u5d1.entities;
 
+import lombok.*;
+
+import java.util.UUID;
+
+@ToString
+@Getter
+@Setter
+// @AllArgsConstructor
+@NoArgsConstructor
 public abstract class Student {
+	@Setter(AccessLevel.NONE) // Non crearmi il setter automaticamente su questo campo
+	private UUID id;
 	private String name;
 	private String surname;
 
@@ -11,27 +22,4 @@ public abstract class Student {
 
 	public abstract void answerQuestion();
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	@Override
-	public String toString() {
-		return "Student{" +
-				"name='" + name + '\'' +
-				", surname='" + surname + '\'' +
-				'}';
-	}
 }
